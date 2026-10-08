@@ -1,0 +1,8 @@
+Minecraft Five Regular source TTF, unmodified.
+The bitmap atlas is generated from its ASCII outlines on the native 140-unit pixel grid.
+Capitals are five pixels high. Transparent padding aligns the baseline with vanilla text.
+Source: https://github.com/Mojang/web-theme-bootstrap
+Commit: 92d9913110cf79db5813e6335f97c6dc689854ee
+Font: https://raw.githubusercontent.com/Mojang/web-theme-bootstrap/92d9913110cf79db5813e6335f97c6dc689854ee/assets/fonts/MinecraftFive-Regular.ttf
+Copyright notices and upstream licenses are included alongside this file.
+No Mojang image assets are included.

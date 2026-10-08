@@ -1,0 +1,19 @@
+# Each qualifying event adds exactly one, irrespective of damage amount.
+# Supported values: DAMAGE, DEATH, MANUAL.
+mode: DAMAGE
+paused: false
+# Automatic setup for every player; individual feedback preference is saved.
+feedback-default: true
+action-bar: true
+name-tags: true
+tab-list: true
+# Native Minecraft pixel font. No client mod or resource pack required.
+font: minecraft:default
+# Empty means all causes. For example: [FALL, FIRE, FIRE_TICK, LAVA]
+ignored-damage-causes: []
+# PvP is on by default. Admins can disable it with /shots pvp off.
+pvp-enabled: true
+# Configure through /shots effects; enable explicitly with /shots effects on.
+effects:
+  enabled: false
+  rules: []

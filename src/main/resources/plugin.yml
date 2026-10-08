@@ -1,0 +1,21 @@
+name: DrunkShyt
+version: '${version}'
+main: dev.drunkshyt.DrunkShytPlugin
+api-version: '26.1.1'
+authors: [Aspect]
+description: Counts damage events and tracks completed shots.
+commands:
+  shots:
+    description: View and manage your shot counter.
+    aliases: [shot, drinks]
+    usage: /shots help
+permissions:
+  drunkshyt.use:
+    description: View and update your own counter.
+    default: true
+  drunkshyt.reset:
+    description: Reset your own counter after confirmation.
+    default: true
+  drunkshyt.admin:
+    description: Configure counting, PvP and shot effects, adjust other players, and reset the round.
+    default: op

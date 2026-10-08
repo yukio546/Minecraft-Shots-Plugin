@@ -1,0 +1,56 @@
+name: Build
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Check wrapper JARs
+        shell: bash
+        run: |
+          echo '55243ef57851f12b070ad14f7f5bb8302daceeebc5bce5ece5fa6edb23e1145c  gradle/wrapper/gradle-wrapper.jar' | sha256sum -c -
+          echo '497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7  client-verification/gradle/wrapper/gradle-wrapper.jar' | sha256sum -c -
+      - name: Build and test
+        shell: bash
+        run: ./gradlew --no-daemon clean test build
+      - name: Build resource pack and source archive
+        shell: bash
+        run: |
+          python scripts/build_resource_pack.py
+          python scripts/package_source.py
+      - name: Upload build outputs
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: DrunkShyt-${{ runner.os }}
+          if-no-files-found: error
+          path: |
+            build/libs/*.jar
+            dist/*.zip
+            dist/*.html
+            dist/*.json
+            dist/*.txt
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: test-results-${{ runner.os }}
+          if-no-files-found: ignore
+          path: build/reports/tests/

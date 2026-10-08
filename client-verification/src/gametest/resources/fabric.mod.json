@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "drunkshyt-font-test",
+  "version": "1.0.0",
+  "name": "DrunkShyt Font Verification",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-client-gametest": ["dev.drunkshyt.verify.FontPackGameTest"]
+  },
+  "depends": {"fabricloader": ">=0.19.3", "minecraft": "26.2", "fabric-api": "*"}
+}

@@ -1,0 +1,35 @@
+# Build output and local tooling
+.gradle/
+build/
+dist/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+._*
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+
+# Server state and local deployment records
+/verification/
+/VERIFICATION.md
+/integration/
+/DrunkShyt-MinecraftFive-1.0/
+/scripts/repair_player_invulnerability.py
+/client-verification/run/
+/server/
+/plugins/
+/world*/
+/backups/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+/server.properties
+/ops.json
+/whitelist.json
+/usercache.json
